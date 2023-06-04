@@ -1,9 +1,9 @@
-import ATM.Accounts;
+package ATM;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-//these test methods aim to test the validity of the methods located in the Accounts class
-public class UserTest {
+class AccountsTest {
 
     @Test
     public void withdrawTest(){
@@ -47,5 +47,4 @@ public class UserTest {
         Assertions.assertEquals(result, account.getBalance(pin));
 
     }
-
 }
