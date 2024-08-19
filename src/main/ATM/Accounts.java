@@ -28,12 +28,21 @@ public class Accounts {
     }
 
     public void withdraw(int pin, double amount){
-
-        accounts.put(pin, accounts.get(pin) - amount);
+        if (amount >= 0.0) {
+            accounts.put(pin, accounts.get(pin) - amount);
+        } else {
+            System.out.println("Withdraw unsuccessful");
+        }
     }
 
-    public double deposit(int pin, double amount){
-        accounts.put(pin, accounts.get(pin) + amount);
-        return accounts.get(pin);
+    public void deposit(int pin, double amount) {
+        if (amount >= 0.0) {
+            accounts.put(pin, accounts.get(pin) + amount);
+            System.out.println("Deposit successful. You have " + accounts.get(pin) + " available");
+            System.out.println("");
+        } else {
+            System.out.println("Deposit unsuccessful.");
+            System.out.println("");
+        }
     }
 }

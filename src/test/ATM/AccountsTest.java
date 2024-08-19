@@ -10,7 +10,7 @@ class AccountsTest {
         Accounts account = new Accounts();
         account.initiate();
         //you can change the value assigned to the amountToWithdraw variable throughout testing to validate that withdrawing different amounts results in successful "withdraws"
-        double amountToWithdraw = 70.00;
+        double amountToWithdraw = 20.45;
         double result = account.getBalance(9332) - amountToWithdraw;
         account.withdraw(9332, amountToWithdraw);
         Assertions.assertEquals(result, account.getBalance(9332));

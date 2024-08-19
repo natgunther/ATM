@@ -1,5 +1,6 @@
 
 package ATM;
+
 import java.util.Scanner;
 public class UI {
     public Scanner scanner;
@@ -33,8 +34,23 @@ public class UI {
                     System.exit(0);
                 case 1:
                     System.out.println("Please enter how much money you would like to withdraw.");
-                    double withdrawal = scanner.nextDouble();
-                    if (withdrawal > accounts.getBalance(pin)){
+                    double withdrawal = 0.0;
+                    do {
+                        try{
+                            String s = scanner.next();
+                            withdrawal = Double.parseDouble(s);
+                            break;
+                        }
+                        catch (Exception e){
+                            System.out.println("Invalid entry, please try again.");
+                        }
+                    }
+                    while (true);
+                    if (withdrawal < 0.0){
+                        System.out.println("Withdraw unsuccessful.");
+                        System.out.println("");
+                    }
+                    else if (withdrawal > accounts.getBalance(pin)){
                         System.out.println("Error, insufficient funds.");
                     } else if (runningWithdrawalSum + withdrawal > maxLimit){
                         System.out.println("Error, your desired withdrawal amount will exceed the daily allotted withdrawal limit.");
@@ -51,10 +67,19 @@ public class UI {
                     break;
                 case 2:
                     System.out.println("Please enter how much money you would like to deposit");
-                    double deposit = scanner.nextDouble();
+                    double deposit = 0.0;
+                    do {
+                        try{
+                            String s = scanner.next();
+                            deposit = Double.parseDouble(s);
+                            break;
+                        }
+                        catch (Exception e){
+                            System.out.println("Invalid entry, please try again.");
+                        }
+                    }
+                    while (true);
                     accounts.deposit(pin, deposit);
-                    System.out.println("Deposit successful. You have " + accounts.getBalance(pin) + " available.");
-                    System.out.println("");
                     break;
                 case 3:
                     System.out.println("You have " + accounts.getBalance(pin) + " available.");
